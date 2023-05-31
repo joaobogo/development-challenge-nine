@@ -6,7 +6,8 @@ import { FaHospitalUser, FaToolbox } from "react-icons/fa";
 import DashboardContext from "../../context/DashboardContext";
 
 function AccountManagement() {
-  const { firstname, lastname, email, setFirstName, setLastName, setEmail } = useContext(DashboardContext);
+  const { firstname, lastname, email, setFirstName, setLastName, setEmail } =
+    useContext(DashboardContext);
   const [isOnline, setIsOnline] = useState(true);
 
   var today = new Date();
@@ -14,7 +15,14 @@ function AccountManagement() {
   var mm = String(today.getMonth() + 1).padStart(2, "0");
   var yyyy = today.getFullYear();
 
-  
+  const handleSend = (e) => {
+    e.preventDefault();
+    localStorage.setItem("firstname", firstname);
+    localStorage.setItem("lastname", lastname);
+    localStorage.setItem("email", email);
+    window.location.reload();
+  };
+
   return (
     <DashboardContainer>
       <div className="left">
@@ -81,23 +89,30 @@ function AccountManagement() {
         <div className="account">
           <h2>Account Management</h2>
           <div className="form">
-            <form>
+            <form onSubmit={handleSend}>
               <label>Edit First Name: </label>
-              <input placeholder="Type New First Name" onChange={(e)=>{setFirstName(e.target.value)}}></input>
+              <input
+                placeholder="Type New First Name"
+                value={firstname}
+                onChange={(e) => setFirstName(e.target.value)}
+              ></input>
               <label>Edit Last Name: </label>
-              <input placeholder="Type New Last Name" onChange={(e)=>{setLastName(e.target.value)}}></input>
+              <input
+                placeholder="Type New Last Name"
+                value={lastname}
+                onChange={(e) => setLastName(e.target.value)}
+              ></input>
               <label>Edit Email: </label>
-              <input placeholder="Type New Email" onChange={(e)=>{setEmail(e.target.value)}}></input>
-              <button>Submit</button>
+              <input
+                placeholder="Type New Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
+              <button type="submit">Submit</button>
             </form>
           </div>
         </div>
-
-         
       </div>
-
-      
-      
     </DashboardContainer>
   );
 }

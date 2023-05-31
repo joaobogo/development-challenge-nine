@@ -16,7 +16,6 @@ function Modal({ selectedId, unselect, selectedPatient, setIsOpen }) {
 
 
   const handleDate = (date) => {
-    console.log(date);
     setBirthday(date)
   };
 
