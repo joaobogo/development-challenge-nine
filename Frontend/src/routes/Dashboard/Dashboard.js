@@ -19,6 +19,7 @@ function Dashboard() {
   var dd = String(today.getDate()).padStart(2, "0");
   var mm = String(today.getMonth() + 1).padStart(2, "0");
   var yyyy = today.getFullYear();
+  today = yyyy + "-" + mm + "-" + dd;
 
   useEffect(() => {
     getPatients().then((data) => setPatients(data));
@@ -94,7 +95,7 @@ function Dashboard() {
               Welcome to the patient management portal.
             </p>
             <p className="date">
-              {dd}/{mm}/{yyyy}
+              {today}
             </p>
           </div>
         </div>
