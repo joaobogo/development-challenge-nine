@@ -4,6 +4,7 @@ import ModalContainer from "./styles/Modal.styles";
 
 function Modal({ selectedId, unselect, selectedPatient, setIsOpen }) {
   const [name, setName] = useState(selectedPatient ? selectedPatient.name : "");
+
   const [birthday, setBirthday] = useState(
     selectedPatient ? handleFormat(selectedPatient.birthday) : ""
   );

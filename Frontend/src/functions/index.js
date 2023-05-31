@@ -2,8 +2,6 @@ import axios from "axios";
 
 const baseURL = "http://localhost:3001/patient";
 
-
-
 export const getPatients = async () => {
   const response = await axios.get(baseURL);
 
@@ -28,16 +26,15 @@ export const updatePatient = async (patient) => {
 
 export const deletePatient = async (id) => {
   try {
-    const delURL = baseURL + "/" + id
+    const delURL = baseURL + "/" + id;
     const response = await axios.delete(delURL);
-    window.location.reload()
-    console.log(response)
+    window.location.reload();
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-export const handleFormat = (date) =>{
+export const handleFormat = (date) => {
   const [month, day, year] = date.split("/");
-return year + "-" + month + "-" + day
-}
+  return year + "-" + month + "-" + day;
+};
